@@ -1,0 +1,32 @@
+<ng-container *ngIf="tiposDeCambio$ | async as dataTiposDeCambio">
+  <div class="row">
+    <p-table [value]="dataTiposDeCambio" [paginator]="dataTiposDeCambio.length > 0" [rows]="10"
+      [showCurrentPageReport]="dataTiposDeCambio.length > 0"
+      [rowHover]="true"
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+      styleClass="p-datatable-sm"
+      [rowsPerPageOptions]="[10,25,50]"  >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 5%">ID</th>
+          <th style="width: 30%">Moneda Origen</th>
+          <th style="width: 30%">Moneda Destino</th>
+          <th style="width: 35%">Monto destino</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr >
+          <td colspan = "9" class="text-center">No hay registros</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tipoDeCambio let-rowIndex="rowIndex">
+        <tr>
+          <td>{{rowIndex + 1}}</td>
+          <td>{{tipoDeCambio.codMonedaOrigen}}</td>
+          <td>{{tipoDeCambio.codMonedaDestino}}</td>
+          <td>{{tipoDeCambio.montoDestino}}</td>
+      </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</ng-container>
