@@ -1,6 +1,7 @@
 FROM node:12.10.0-alpine
 
-VOLUME [ "/src/webapp" ]
+WORKDIR /src/webapp
+
 COPY . .
 RUN npm install -g @angular/cli@10.0.0
 RUN npm install
